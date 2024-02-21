@@ -1,10 +1,9 @@
 # riberry
 
-A Clojure library designed to ... well, that part is up to you.
+[![Build Status](https://github.com/zcaudate-xyz/riberry/actions/workflows/clojure.yml/badge.svg)](https://github.com/zcaudate-xyz/riberry/actions)
+[![Clojars Project](https://img.shields.io/clojars/v/xyz.zcaudate/riberry.svg)](https://clojars.org/xyz.zcaudate/riberry)
 
-## Usage
-
-FIXME
+Riberry client library for Clojure
 
 ## License
 
