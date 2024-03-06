@@ -7,7 +7,8 @@
   {"test"  ["exec" "-ep" "(use 'code.test) (def res (run :all)) (System/exit (+ (:failed res) (:thrown res)))"]}
   
   :dependencies [[org.clojure/clojure "1.11.1"]
-                 [com.github.oliyh/martian         "0.1.26"]
+                 [org.clojure/data.csv "1.0.1"]
+                 [zcaudate/malli                    "0.14.0"]
                  [xyz.zcaudate/std.lib             "4.0.1"]
                  [xyz.zcaudate/std.text            "4.0.1"]
                  [xyz.zcaudate/std.html            "4.0.1"]
