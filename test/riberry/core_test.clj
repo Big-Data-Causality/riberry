@@ -1,7 +1,8 @@
 (ns riberry.core-test
   (:use code.test)
   (:require [riberry.core :as core]
-            [riberry.meta :as meta]))
+            [riberry.meta :as meta]
+            [std.string :as str]))
 
 ^{:refer riberry.core/set-site-opts :added "0.1"}
 (fact "sets the site options"
