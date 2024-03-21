@@ -83,8 +83,16 @@
   (filter (fn [{:keys [path-params
                        query-params
                        body-params]}]
-            (and body-params
-                 (not (get-in body-params  ["content" "application/json" "schema"]))))
+            (get-in body-params  ["content" "multipart/form-data"]))
+          +all+))
+
+(defn list-unit-non-ref
+  []
+  (filter (fn [{:keys [path-params
+                       query-params
+                       body-params]}]
+            (and (get-in body-params  ["content" "application/json" "schema"])
+                 (not (get-in body-params  ["content" "application/json" "schema" "$ref"]))))
           +all+))
 
 (defn list-unit-triple
@@ -96,55 +104,3 @@
                  query-params
                  body-params))
           +all+))
-
-
-;;
-;; malli checks
-;;
-
-(defn check-path-params-single
-  "checks a single path params"
-  {:added "0.1"}
-  [{:strs [schema]
-    :as params} input]
-  (let [spec  (mc/from-ast (p/parse-component schema))]
-    (when (not (mc/validate spec input))
-      (throw (ex-info "Not valid"
-                      {:reason (me/humanize (mc/explain spec input))})))
-    input))
-
-(defn check-path-params
-  "checks all path params"
-  {:added "0.1"}
-  [all-params all-inputs]
-  (doall (map check-path-params-single all-params all-inputs)))
-
-(defn check-query-params
-  "checks all query params"
-  {:added "0.1"}
-  [all-params all-inputs]
-  (let [spec  (mc/from-ast
-               {:type :map
-                :keys (h/map-juxt [(fn [m]
-                                     (get m "name"))
-                                   (fn [{:strs [nullable]
-                                         :as m}]
-                                     (cond-> {:value (p/parse-component (get m "schema"))}
-                                       nullable (assoc-in [:properties :optional] true)))]
-                                  all-params)})]
-    (when (not (mc/validate spec all-inputs))
-      (throw (ex-info "Not valid"
-                      {:reason (me/humanize (mc/explain spec all-inputs))})))
-    all-inputs))
-
-(defn check-body-params
-  "checks body params"
-  {:added "0.1"}
-  [{:strs [content]
-    :as params} input]
-  (let[{:strs [$ref]}  (get-in content ["application/json" "schema"])
-       spec (to-spec $ref)]
-    (when (not (mc/validate spec input))
-      (throw (ex-info "Not valid"
-                      {:reason (me/humanize (mc/explain spec input))})))
-    input))
