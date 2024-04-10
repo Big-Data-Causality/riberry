@@ -1,7 +1,7 @@
 # riberry
 
-[![Build Status](https://github.com/zcaudate-xyz/riberry/actions/workflows/clojure.yml/badge.svg)](https://github.com/zcaudate-xyz/riberry/actions)
-[![Clojars Project](https://img.shields.io/clojars/v/xyz.zcaudate/riberry.svg)](https://clojars.org/xyz.zcaudate/riberry)
+[![Build Status](https://github.com/Big-Data-Causality/riberry/actions/workflows/clojure.yml/badge.svg)](https://github.com/Big-Data-Causality/riberry/actions)
+[![Clojars Project](https://img.shields.io/clojars/v/com.bigdatacausality/riberry.svg)](https://clojars.org/com.bigdatacausality/riberry)
 
 Riberry client library for Clojure
 

@@ -1,6 +1,6 @@
-(defproject xyz.zcaudate/riberry "0.1.1"
+(defproject com.bigdatacausality/riberry "0.1.6"
   :description "library to access the riberry api"
-  :url "https://github.com/zcaudate-xyz/riberry"
+  :url "https://github.com/Big-Data-Causality/riberry"
   :license  {:name "MIT License"
              :url  "http://opensource.org/licenses/MIT"}
   :aliases
